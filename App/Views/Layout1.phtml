@@ -1,0 +1,89 @@
+<html lang="pt-br">
+    <header>
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-png" >
+      <!-- Meta tags Obrigatórias -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Fontawesome -->
+        <link rel="stylesheet"  type="text/css"  href="/assets/fontawesome/css/all.css" >
+        
+        
+        <title>P&G Investimentos</title>
+        <!-- Bootstrap css -->
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" >
+        <!-- Style css -->
+        <link rel="stylesheet" type="text/css" href="assets/css style/style.css" >
+    </header>
+    <body>
+      <!--Layout padrao do projeto-->     
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+      <div class="container">
+
+      <a class="navbar-brand h1 mb=0" href="/">P&G Investimentos</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
+        <spam class="navbar-toggler-icon"></spam>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSite">
+        
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Investimentos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  href="/empresas">Empresas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/investidores">Investidores</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/sobre_nos">Sobre Nós</a>
+          </li> 
+        </ul>
+        <form class="form-inline">
+          <div  class="collapse navbar-collapse" id="navbarSite">  
+            <a class="nav-link btn btn-dark" href="/login">Entrar</a>
+          </div>
+          <div><br/></div>
+          </form>
+          <form class="form-inline">
+
+          <a class="nav-link dropdown-toggle btn btn-dark" href="#" id="navbardrop" data-toggle="dropdown">
+            Cadastrar 
+          </a>
+          <li class="nav-item dropdown">
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="">Empresa</a>
+        <a class="dropdown-item" href="/inscreverse">Investidor</a>
+        
+      </div>
+    </li>
+          
+        </form>
+
+      </div>
+    </div>
+
+    </nav>
+    
+   <?= $this->content() ?> 
+
+    <!--Arquivos jquery, ajax, js do bootstrap e js-->   
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS 
+    <script src="/assets/bootstrap/jquery/dist/jquery.js"></script>
+    <script src="/assets/bootstrap/popper.js/dist/umd/popper.js"></script>
+    <script src="/bootstrap/dist/js/bootstrap.js"></script>-->
+
+
+  </body>
+</html>

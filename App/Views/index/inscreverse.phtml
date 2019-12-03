@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-png" >
+      <!-- Meta tags Obrigatórias -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Fontawesome -->
+        <link rel="stylesheet"  type="text/css"  href="/assets/fontawesome/css/all.css" >
+        
+        
+        <title>P&G Investimentos</title>
+        <!-- Bootstrap css -->
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" >
+        <!-- Style css -->
+        <link rel="stylesheet" type="text/css" href="assets/css style/style.css" >
+  </head>
+  <body>
+    <div class="row bg-secondary text-white">
+      <div class="col-12 text-center my-5">
+        <h1 class="display-3">Seja um Investidor</h1>
+      </div>
+    </div>
+    <div class="col-12 text-center my-5">
+      <h3 class="display-5">Insira os seguintes dados para se  cadastrar:</h3>
+    </div>
+    <div class="d-flex justify-content-center">
+      <div class="my-5 text-center col-5">
+    <form action="/registrar" method="post">
+    <div class="form-group row">
+        <label for="inputDados" class="col-sm-2 col-form-label">Nome</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" value="<?php $this->view->usuario['nome'] ?>" name ="nome" placeholder="Digite o seu nome">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputDados" class="col-sm-2 col-form-label">Profissão</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" value="<?php $this->view->usuario['profissao'] ?>" name ="profissao" placeholder="Digite o CNPJ ou CPF">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputDados" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control"  value="<?php $this->view->usuario['email'] ?>" name ="email" placeholder="Digite o CNPJ ou CPF">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputDados" class="col-sm-2 col-form-label">CPF</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" value="<?php $this->view->usuario['cpf'] ?>" name ="cpf" placeholder="Digite o CNPJ ou CPF">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputDados" class="col-sm-2 col-form-label">Telefone</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control"  value="<?php $this->view->usuario['telefone'] ?>" name ="telefone" placeholder="Digite o CNPJ ou CPF">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Senha</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control"  value="<?php $this->view->usuario['senha'] ?>" name ="senha" placeholder="Digite a Senha">
+        </div>
+      </div>
+    </div>
+   
+  </div>
+  <div class="d-flex justify-content-center col-12 my-10 text-center">
+    
+    <form>
+        <fieldset class="form-group">
+            <br>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                <?php if($this->view->erroCadastro) { ?>
+                  <small class="form-text text-danger">*erro ao tentar realizar o cadastro, verifique se os campos foram prencidos corretamente.</small>
+                  <?php }?>
+                  
+                </div>
+              </div>
+              <br>
+              <br>
+              <div class="form-group row">
+                <div class="col-sm-10">
+                   
+                    <a href="/" class="btn btn-dark btn-primary btn-lg active" role="button" aria-pressed="true">Voltar ao Menu</a>
+                </div>
+              </div>
+              
+          </fieldset>
+    </form>
+    </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+  </body>
+</html>

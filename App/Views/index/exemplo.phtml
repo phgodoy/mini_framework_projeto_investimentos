@@ -1,0 +1,9 @@
+<h1>Pagina de testes</h1>
+<hr/>
+<?php
+ 
+   foreach($this->view->dados as $indice => $investidor ){
+      echo $investidor['ID_INVESTIDOR']."-".$investidor['NOME']."-".$investidor['PROFISSAO']."-".$investidor['EMAIL']."-".$investidor['CPF']."-".$investidor['TELEFONE'];
+      echo "<br/>";
+  }
+?>
