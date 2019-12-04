@@ -68,10 +68,16 @@ class Route extends Bootstrap{
             'action' => 'autenticar'
         );
 
-        $routes['timeline'] = array(
-            'route' => '/timeline',
+        $routes['indexInvestidor'] = array(
+            'route' => '/indexInvestidor',
             'controller' => 'AppController',
-            'action' => 'timeline'
+            'action' => 'indexInvestidor'
+        );
+
+        $routes['perfilInvestidor'] = array(
+            'route' => '/perfilInvestidor',
+            'controller' => 'AppController',
+            'action' => 'perfilInvestidor'
         );
 
         $routes['sair'] = array(

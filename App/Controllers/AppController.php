@@ -15,19 +15,36 @@ use App\Controller\IndexController;
 
 class AppController extends Action{
 
-    public function timeline(){
+
+
+
+    public function indexInvestidor(){
 
         session_start();
 
         if($_SESSION['ID_INVESTIDOR'] != '' && $_SESSION['NOME'] != ''){
         
-            $this->render('timeline','');
+            $this->render('indexInvestidor','Layout2');
         }
         else{
             $this->view->erroLogin = true;
             header('Location: /login');
         }
        
+    }
+
+    public function perfilInvestidor(){
+        session_start();
+
+        if($_SESSION['ID_INVESTIDOR'] != '' && $_SESSION['NOME'] != ''){
+        
+            $this->render('perfilInvestidor', 'Layout2');
+        }
+        else{
+            $this->view->erroLogin = true;
+            header('Location: /login');
+        }
+        
     }
 
 }

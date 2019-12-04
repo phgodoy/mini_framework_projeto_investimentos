@@ -128,7 +128,7 @@ class IndexController extends Action {
              $_SESSION['ID_INVESTIDOR'] = $investidor->__get('id');
              $_SESSION['NOME'] = $investidor->__get('nome'); 
 
-             header('Location: /timeline');
+             header('Location: /indexInvestidor');
        }
        else{
           
