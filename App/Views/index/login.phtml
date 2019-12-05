@@ -15,6 +15,17 @@
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" >
         <!-- Style css -->
         <link rel="stylesheet" type="text/css" href="assets/css style/style.css" >
+        <!-- Implementação JQuery Mask -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
+
+        <!-- Mascara CPF E telefone -->
+        <script type="text/javascript">
+        $(document).ready(function () { 
+          var $seuCampoCpf = $("#cpf");
+          $seuCampoCpf.mask('000.000.000-00', {reverse: true});
+        });
+        </script>
   </head>
   <body>
     <div class="row bg-secondary text-white">
@@ -29,9 +40,9 @@
       <div class="my-5 text-center col-5">
     <form method="post" action="/autenticar">
       <div class="form-group row">
-        <label for="inputDados" class="col-sm-2 col-form-label">CNPJ / CPF</label>
+        <label for="inputDados" class="col-sm-2 col-form-label">CPF</label>
         <div class="col-sm-10">
-          <input type="text" name = "cpf" class="form-control" placeholder="Digite o CNPJ ou CPF">
+        <input type="text" class="form-control" name ="cpf" id="cpf" maxlength="14" placeholder="Digite seu CPF">
         </div>
       </div>
       <div class="form-group row">
@@ -49,18 +60,16 @@
         <fieldset class="form-group">
             <br>
             <div class="form-group row">
-                <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-dark btn-block">Entrar</button>
                 <?php if($this->view->erroLogin) { ?>
                   <small class="form-text text-danger">*erro ao tentar realizar o Login, verifique se os campos foram prencidos corretamente.</small>
                 <?php }?>
                 </div>
               </div>
               <br>
-              <br>
               <div class="form-group row">
-                <div class="col-sm-10">
-                   
+                <div class="col-12">
                     <a href="/" class="btn btn-dark btn-primary btn-lg active" role="button" aria-pressed="true">Voltar ao Menu</a>
                 </div>
               </div>
@@ -72,6 +81,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.min.js"></script>
 
   </body>
 </html>
