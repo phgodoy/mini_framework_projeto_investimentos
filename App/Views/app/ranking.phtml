@@ -1,0 +1,24 @@
+<?php 
+
+?>
+<div class="row">
+    <table id="dynamic-table" class="display table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="col-md-1 center">Nome</th>
+                <th class="col-md-1 center">Contato</th>
+                <th class="col-md-1 center">Capital investido</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach($this->view->empresas as $empresa){ ?>
+            <tr>
+                <td class="center"><?php  print_r($empresa['NOME']); ?></td>
+                <td class="center"><?php  print_r($empresa['EMAIL']); ?></td>
+                <td class="center"><?php  print_r($empresa['VLR_INVESTIDO']); ?></td>
+            </tr>
+        <?php } ?>    
+        </tbody>
+    </table>
+
+</div>   

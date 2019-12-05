@@ -7,8 +7,9 @@ use MF\Model\Container;
 
 
 //recursos dos models
-use App\Models\Produto;
-use App\Models\Investidores;
+use App\Models\Usuario;
+
+use App\Models\Empresa;
 
 use App\Controller\IndexController;
 
@@ -39,6 +40,64 @@ class AppController extends Action{
         if($_SESSION['ID_INVESTIDOR'] != '' && $_SESSION['NOME'] != ''){
         
             $this->render('perfilInvestidor', 'Layout2');
+         
+        }
+        else{
+            $this->view->erroLogin = true;
+            header('Location: /login');
+        }
+        
+    }
+    public function ranking(){
+        session_start();
+
+        if($_SESSION['ID_INVESTIDOR'] != '' && $_SESSION['NOME'] != ''){
+        
+            
+            $empresa = Container::getModel('Empresa');
+            $this->view->empresas = $empresa->listar();
+            $this->render('ranking', 'Layout2');            
+        }
+        else{
+            $this->view->erroLogin = true;
+            header('Location: /login');
+        }
+        
+    }
+
+    public function investir(){
+        session_start();
+
+        if($_SESSION['ID_INVESTIDOR'] != '' && $_SESSION['NOME'] != ''){
+        
+            
+            $empresa = Container::getModel('Empresa');
+            $this->view->empresas = $empresa->listar();
+            $this->render('investir', 'Layout2');            
+        }
+        else{
+            $this->view->erroLogin = true;
+            header('Location: /login');
+        }
+        
+    }
+    public function pagar(){
+        session_start();
+
+        if($_SESSION['ID_INVESTIDOR'] != '' && $_SESSION['NOME'] != ''){
+        
+            $destinatario = $_POST['nomeEmpresa'];
+            $valor = $_POST['valor'];
+            $parcela = $_POST['parcela'];
+
+            if($destinatario ==''){
+                echo 'erro';
+            }
+            echo $destinatario ;
+            print_r($valor);
+            print_r($parcela);
+            die;
+                       
         }
         else{
             $this->view->erroLogin = true;

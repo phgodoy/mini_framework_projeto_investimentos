@@ -79,6 +79,24 @@ class Route extends Bootstrap{
             'controller' => 'AppController',
             'action' => 'perfilInvestidor'
         );
+        
+        $routes['ranking'] = array(
+            'route' => '/ranking',
+            'controller' => 'AppController',
+            'action' => 'ranking'
+        );
+
+        $routes['investir'] = array(
+            'route' => '/investir',
+            'controller' => 'AppController',
+            'action' => 'investir'
+        );
+
+        $routes['pagar'] = array(
+            'route' => '/pagar',
+            'controller' => 'AppController',
+            'action' => 'pagar'
+        );
 
         $routes['sair'] = array(
             'route' => '/sair',

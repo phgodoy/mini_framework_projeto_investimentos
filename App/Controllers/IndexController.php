@@ -9,7 +9,7 @@ use MF\Model\Container;
 
 //recursos dos models
 use App\Models\Produto;
-use App\Models\Investidores;
+use App\Models\Usuario;
 
 class IndexController extends Action {
 

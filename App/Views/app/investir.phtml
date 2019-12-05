@@ -1,0 +1,56 @@
+
+    <div class="row bg-secondary text-white">
+        <div class="col-12 text-center my-5">
+          <h1 class="display-3">Investimentos</h1>
+        </div>
+      </div>
+        <div class="col-12 text-center my-5">
+            <h3 class="display-4">Conheça nossos Investimentos</h3>
+            <br>
+          </div>
+    <div>
+        <form method="post" action="/pagar">
+            <div class="form-group col-md-6 offset-md-3">
+              <label for="exampleFormControlSelect2">Selecione a Empresa do Investimento</label>
+              <select multiple class="form-control" name ='nomeEmpresa'>
+              <?php foreach($this->view->empresas as $empresa){ ?>
+                <option value="<?php $empresa['NOME']; ?>" ><?php  print_r($empresa['NOME']); ?></option>
+                <?php } ?>     
+              </select>
+            </div>
+            <div class="input-group col-md-6 offset-md-3">
+            <p>Valor de Investimento</p>
+            <br>
+            </div>
+            <div class="input-group col-md-6 offset-md-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">R$</span>
+              </div>
+              <input type="text" name="valor" class="form-control" aria-label="Amount (to the nearest dollar)">
+              <div class="input-group-append">
+                <span class="input-group-text">.00</span>
+              </div>
+            </div>
+            <br/>
+            <div class="input-group col-md-6 offset-md-3">
+            <p>Parcelas</p>
+            <br>
+            </div>
+            <div class="input-group col-md-6 offset-md-3">
+            <select class="custom-select my-1 mr-sm-2" name="parcela">
+                  <option selected>Escolha a quantidade de parcelas</option>
+                  <option value="1">1x</option>
+                  <option value="24">24x</option>
+                  <option value="60">60x</option>
+                </select>
+            </div>
+            </div>
+           
+            
+           
+              
+            <div class="col-12 text-center my-3">
+                <button type="submit" class="btn btn-dark">Enviar</button>
+            </div>
+          </form>
+    </div>
