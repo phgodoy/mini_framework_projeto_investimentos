@@ -1,1 +1,28 @@
-<h1>cola aqui</h1>
+<?php 
+
+?>
+<div class="row">
+    <table id="dynamic-table" class="display table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="col-md-1 center">Nome</th>
+                <th class="col-md-1 center">Profissão</th>
+                <th class="col-md-1 center">Email</th>
+                <th class="col-md-1 center">Telefone</th>
+                <th class="col-md-1 center">CPF</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach($this->view->usuarios as $usuario){ ?>
+            <tr>
+                <td class="center"><?php  print_r($usuario['NOME']); ?></td>
+                <td class="center"><?php  print_r($usuario['PROFISSAO']); ?></td>
+                <td class="center"><?php  print_r($usuario['EMAIL']); ?></td>
+                <td class="center"><?php  print_r($usuario['TELEFONE']); ?></td>
+                <td class="center"><?php  print_r($usuario['CPF']); ?></td>
+            </tr>
+        <?php } ?>    
+        </tbody>
+    </table>
+
+</div>   

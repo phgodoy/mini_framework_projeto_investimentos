@@ -39,6 +39,9 @@ class AppController extends Action{
 
         if($_SESSION['ID_INVESTIDOR'] != '' && $_SESSION['NOME'] != ''){
         
+               
+            $usuario = Container::getModel('Usuario');
+            $this->view->usuarios = $usuario->listar();
             $this->render('perfilInvestidor', 'Layout2');
          
         }
@@ -86,14 +89,14 @@ class AppController extends Action{
 
         if($_SESSION['ID_INVESTIDOR'] != '' && $_SESSION['NOME'] != ''){
         
-            $destinatario = $_POST['nomeEmpresa'];
+            $empresa = $_POST['nomeEmpresa'];
             $valor = $_POST['valor'];
             $parcela = $_POST['parcela'];
 
-            if($destinatario ==''){
+            if($empresa ==''){
                 echo 'erro';
             }
-            echo $destinatario ;
+            echo $empresa ;
             print_r($valor);
             print_r($parcela);
             die;

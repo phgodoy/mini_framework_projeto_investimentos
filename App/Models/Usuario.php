@@ -88,11 +88,29 @@ class Usuario extends Model{
             $this->__set('cpf', $investidor['CPF']);
         }
         else{
-
         }
-        return $this;
+        return $this;  
+    }
+
+    public function listar(){
+        $id = $_SESSION['ID_INVESTIDOR'];
+      
+        $query = "SELECT NOME, PROFISSAO, EMAIL, TELEFONE, CPF FROM investidor WHERE ID_INVESTIDOR = $id";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $usuario = $stmt->fetchAll();
+
+      
+        return $usuario;
+    }
+
+    public function investir($empresa, $valor, $parcelas){
+        $query = "INSERT INTO `parcelas`(`VL_TOTAL`, `QTD_PARCELAS`) VALUES ( $valor,$parcelas);";
+        $query = "INSERT INTO `empresa`(`$empresa`, `QTD_PARCELAS`) VALUES ( $valor,$parcelas);";
+
         
     }
+
 }
 
 

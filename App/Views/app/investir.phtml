@@ -14,7 +14,7 @@
               <label for="exampleFormControlSelect2">Selecione a Empresa do Investimento</label>
               <select multiple class="form-control" name ='nomeEmpresa'>
               <?php foreach($this->view->empresas as $empresa){ ?>
-                <option value="<?php $empresa['NOME']; ?>" ><?php  print_r($empresa['NOME']); ?></option>
+                <option value="<?php print_r($empresa['NOME']); ?>" ><?php  print_r($empresa['NOME']); ?></option>
                 <?php } ?>     
               </select>
             </div>
