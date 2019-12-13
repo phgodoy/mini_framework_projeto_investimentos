@@ -73,7 +73,7 @@ class AppController extends Action{
 
         if($_SESSION['ID_INVESTIDOR'] != '' && $_SESSION['NOME'] != ''){
         
-            
+            $this->view->erroInvestir = false;    
             $empresa = Container::getModel('Empresa');
             $this->view->empresas = $empresa->listar();
             $this->render('investir', 'Layout2');            
@@ -89,17 +89,17 @@ class AppController extends Action{
 
         if($_SESSION['ID_INVESTIDOR'] != '' && $_SESSION['NOME'] != ''){
         
-            $empresa = $_POST['nomeEmpresa'];
+            $nomeEmpresa = $_POST['nomeEmpresa'];
             $valor = $_POST['valor'];
             $parcela = $_POST['parcela'];
+            $empresa = Container::getModel('Empresa');
 
-            if($empresa ==''){
-                echo 'erro';
+            if($nomeEmpresa ==''){
+                $this->view->erroInvestir = true;
+                header('Location: /investir');
             }
-            echo $empresa ;
-            print_r($valor);
-            print_r($parcela);
-            die;
+            $this->view->empresas = $empresa->pagar($nomeEmpresa, $valor);
+            $this->render('pagamentorealizado', '');
                        
         }
         else{

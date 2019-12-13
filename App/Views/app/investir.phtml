@@ -45,12 +45,12 @@
                 </select>
             </div>
             </div>
-           
-            
-           
               
             <div class="col-12 text-center my-3">
                 <button type="submit" class="btn btn-dark">Enviar</button>
+                <?php if($this->view->erroInvestir) { ?>
+                  <small class="form-text text-danger">*Prencher todas as informaçoes.</small>
+                <?php }?>
             </div>
           </form>
     </div>

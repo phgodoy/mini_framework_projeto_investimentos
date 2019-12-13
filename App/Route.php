@@ -98,6 +98,12 @@ class Route extends Bootstrap{
             'action' => 'pagar'
         );
 
+        $routes['pagamentorealizado'] = array(
+            'route' => '/pagamentorealizado',
+            'controller' => 'AppController',
+            'action' => 'pagamentorealizado'
+        );
+
         $routes['sair'] = array(
             'route' => '/sair',
             'controller' => 'indexController',

@@ -32,8 +32,20 @@ class Empresa extends Model {
         return $empresas;
         
 
-        die;
+
     
     }
+
+    public function pagar($nomeEmpresa, $valor){
+        $query =  "UPDATE empresa SET VLR_INVESTIDO = :vlrInvestidor WHERE NOME= :nome ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':vlrInvestidor', $valor);
+        $stmt->bindValue(':nome', $nomeEmpresa);
+        $stmt->execute();
+     
+        $empresas = $stmt->fetch(\PDO::FETCH_ASSOC);
+        return $empresas;
+    }
+
 }
 ?>
