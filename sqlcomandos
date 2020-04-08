@@ -1,0 +1,53 @@
+//criaçao das tabelas usadas no sistema
+
+CREATE TABLE investidor (
+    ID int NOT NULL AUTO_INCREMENT,
+    NOME varchar(40),
+    PROFISSAO varchar(40),
+    EMAIL varchar(40),
+    CPF  varchar(11),
+    TELEFONE varchar(16),
+    SENHA varchar(40),
+    PRIMARY KEY (ID)
+);
+
+CREATE TABLE empresa (
+    ID_EMPRESA int NOT NULL AUTO_INCREMENT,
+    NOME varchar(40),
+    EMAIL varchar(40),
+    CNPJ  varchar(11),
+    TELEFONE varchar(16),
+    TOTAL_INVESTIDO float,
+    PRIMARY KEY (ID_EMPRESA)
+);
+
+CREATE TABLE INVESTIMENTO (
+    COD_INVESTIMENTO int NOT NULL AUTO_INCREMENT,
+    ID_INVESTIDOR int NOT NULL,
+    ID_EMPRESA int NOT NULL,
+    EMPRESA varchar(40),
+    VLR_INVESTIDO float,
+    PRIMARY KEY (COD_INVESTIMENTO),
+    FOREIGN KEY (ID_INVESTIDOR)REFERENCES investidor(ID),
+    FOREIGN  KEY (ID_EMPRESA)REFERENCES empresa(ID_EMPRESA)
+);
+
+//cadastrar empresas
+INSERT INTO empresa(NOME, EMAIL,CNPJ,TELEFONE )VALUES('Godoy Tec', 'godoytec@mail.com', '84.493.090/0001-90', '31(23)654-91-05');
+INSERT INTO empresa(NOME, EMAIL,CNPJ,TELEFONE )VALUES('Tec Guerra', 'tecguerra@mail.com', '88.611.547/0001-74', '68(08)249-31-68');
+INSERT INTO empresa(NOME, EMAIL,CNPJ,TELEFONE )VALUES('Cinnamon', 'cinnamon@mail.com', '17.490.422/0001-95', '83(294)227-93-86');
+
+
+//join investidor
+SELECT investimento.COD_INVESTIMENTO, investimento.ID_INVESTIDOR, investimento.ID_EMPRESA, investimento.EMPRESA, investimento.VLR_INVESTIDO FROM investimento JOIN investidor
+ON investidor.ID = investimento.ID_INVESTIDOR;
+
+
+SELECT investimento.COD_INVESTIMENTO, investimento.ID_INVESTIDOR, investimento.ID_EMPRESA, investimento.EMPRESA, investimento.VLR_INVESTIDO FROM investimento JOIN empresa
+ON empresa.ID_EMPRESA = investimento.ID_EMPRESA;
+
+//update
+UPDATE `empresa` SET `TOTAL_INVESTIDO` = '0' WHERE `empresa`.`ID_EMPRESA` = 1;
+
+//historico de investimentos
+SELECT `EMPRESA`, `VLR_INVESTIDO`, `PARCELA`, `VLR_PARCELA` FROM `investimento`  WHERE `investimento`.`ID_INVESTIDOR` = 1;

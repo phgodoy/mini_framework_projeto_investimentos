@@ -14,7 +14,6 @@ use App\Models\Usuario;
 class IndexController extends Action {
 
 	public function index() {
-
 	
 		//renderisa informacoes
 		$this->render('index', 'layout1');
@@ -62,7 +61,6 @@ class IndexController extends Action {
 
 	public function login(){
 
-
 		$this->view->erroLogin = false;
 		//renderisa informacoes 
 		$this->render('login', '');
@@ -81,7 +79,6 @@ class IndexController extends Action {
 		$investidor->__set('cpf', $_POST['cpf']);
 		$investidor->__set('telefone', $_POST['telefone']);
 		$investidor->__set('senha', md5($_POST['senha']));
-	
 		
 		//sucesso
 		if($investidor->validarCadastro() && count($investidor->getUsuarioPorEmail())==0){
@@ -112,23 +109,22 @@ class IndexController extends Action {
 
 	
     public function autenticar(){
-
-        
-        
+      
         $investidor = Container::getModel('Usuario');
 
-        $investidor->__set('cpf', $_POST['cpf']);
+        $investidor->__set('email', $_POST['email']);
         $investidor->__set('senha', md5($_POST['senha']));
 
-       
+    
        $retorno = $investidor->autenticar();
         
        if($investidor->__get('id') != '' && $investidor->__get('nome') != ''){
-              session_start();
-             $_SESSION['ID_INVESTIDOR'] = $investidor->__get('id');
-             $_SESSION['NOME'] = $investidor->__get('nome'); 
-
-             header('Location: /indexInvestidor');
+		
+            session_start();
+            $_SESSION['ID'] = $investidor->__get('id');
+            $_SESSION['NOME'] = $investidor->__get('nome'); 
+             
+            header('Location: /indexInvestidor');
        }
        else{
           
@@ -136,7 +132,7 @@ class IndexController extends Action {
            $this->render('login','');
             
        }
-	}
+    }
 	
 	public function sair(){
 		session_start();

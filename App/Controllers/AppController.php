@@ -16,14 +16,11 @@ use App\Controller\IndexController;
 
 class AppController extends Action{
 
-
-
-
     public function indexInvestidor(){
 
         session_start();
 
-        if($_SESSION['ID_INVESTIDOR'] != '' && $_SESSION['NOME'] != ''){
+        if($_SESSION['ID'] != '' && $_SESSION['NOME'] != ''){
         
             $this->render('indexInvestidor','Layout2');
         }
@@ -37,7 +34,7 @@ class AppController extends Action{
     public function perfilInvestidor(){
         session_start();
 
-        if($_SESSION['ID_INVESTIDOR'] != '' && $_SESSION['NOME'] != ''){
+        if($_SESSION['ID'] != '' && $_SESSION['NOME'] != ''){
         
                
             $usuario = Container::getModel('Usuario');
@@ -51,27 +48,26 @@ class AppController extends Action{
         }
         
     }
-    public function ranking(){
+    public function historico(){
         session_start();
 
-        if($_SESSION['ID_INVESTIDOR'] != '' && $_SESSION['NOME'] != ''){
+        if($_SESSION['ID'] != '' && $_SESSION['NOME'] != ''){
         
             
             $empresa = Container::getModel('Empresa');
-            $this->view->empresas = $empresa->listar();
-            $this->render('ranking', 'Layout2');            
+            $this->view->empresas = $empresa->historico();
+            $this->render('historico', 'Layout2');            
         }
         else{
             $this->view->erroLogin = true;
             header('Location: /login');
-        }
-        
+        }   
     }
 
     public function investir(){
         session_start();
 
-        if($_SESSION['ID_INVESTIDOR'] != '' && $_SESSION['NOME'] != ''){
+        if($_SESSION['ID'] != '' && $_SESSION['NOME'] != ''){
         
             $this->view->erroInvestir = false;    
             $empresa = Container::getModel('Empresa');
@@ -81,24 +77,26 @@ class AppController extends Action{
         else{
             $this->view->erroLogin = true;
             header('Location: /login');
-        }
-        
+        }    
     }
+
     public function pagar(){
         session_start();
 
-        if($_SESSION['ID_INVESTIDOR'] != '' && $_SESSION['NOME'] != ''){
+        if($_SESSION['ID'] != '' && $_SESSION['NOME'] != ''){
         
             $nomeEmpresa = $_POST['nomeEmpresa'];
             $valor = $_POST['valor'];
             $parcela = $_POST['parcela'];
+            $vlrParcela = $_POST['valor']/$_POST['parcela'];
+    
             $empresa = Container::getModel('Empresa');
 
-            if($nomeEmpresa ==''){
+            if($nomeEmpresa =='' || $valor == '' || $parcela == ''|| $vlrParcela == ''){
                 $this->view->erroInvestir = true;
                 header('Location: /investir');
             }
-            $this->view->empresas = $empresa->pagar($nomeEmpresa, $valor);
+            $this->view->empresas = $empresa->pagar($nomeEmpresa, $valor, $parcela, $vlrParcela);
             $this->render('pagamentorealizado', '');
                        
         }

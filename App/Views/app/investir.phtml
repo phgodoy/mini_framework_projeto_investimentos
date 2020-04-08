@@ -12,7 +12,8 @@
         <form method="post" action="/pagar">
             <div class="form-group col-md-6 offset-md-3">
               <label for="exampleFormControlSelect2">Selecione a Empresa do Investimento</label>
-              <select multiple class="form-control" name ='nomeEmpresa'>
+              <select  class="custom-select my-1 mr-sm-2" name ='nomeEmpresa'>
+            
               <?php foreach($this->view->empresas as $empresa){ ?>
                 <option value="<?php print_r($empresa['NOME']); ?>" ><?php  print_r($empresa['NOME']); ?></option>
                 <?php } ?>     

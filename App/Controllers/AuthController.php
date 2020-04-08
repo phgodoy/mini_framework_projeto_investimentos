@@ -27,21 +27,22 @@ class AuthController extends Action{
 	
 
     public function autenticar(){
-
+      
         $investidor = Container::getModel('Usuario');
 
-        $investidor->__set('cpf', $_POST['cpf']);
-        $investidor->__set('senha', $_POST['senha']);
+        $investidor->__set('email', $_POST['email']);
+        $investidor->__set('senha', md5($_POST['senha']));
 
-       
+    
        $retorno = $investidor->autenticar();
         
        if($investidor->__get('id') != '' && $investidor->__get('nome') != ''){
+          
              session_start();
-             $_SESSION['ID_INVESTIDOR'] = $investidor->__get('id');
+             $_SESSION['ID'] = $investidor->__get('id');
              $_SESSION['NOME'] = $investidor->__get('nome'); 
-
-             header('Location: /timeline');
+             
+             header('Location: /indexInvestidor');
        }
        else{
           

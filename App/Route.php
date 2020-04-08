@@ -80,10 +80,10 @@ class Route extends Bootstrap{
             'action' => 'perfilInvestidor'
         );
         
-        $routes['ranking'] = array(
-            'route' => '/ranking',
+        $routes['historico'] = array(
+            'route' => '/historico',
             'controller' => 'AppController',
-            'action' => 'ranking'
+            'action' => 'historico'
         );
 
         $routes['investir'] = array(

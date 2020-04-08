@@ -23,6 +23,7 @@ class Usuario extends Model{
     
     //salvar
     public function salvar() {
+        
         $query = "INSERT INTO investidor(NOME, PROFISSAO, EMAIL, CPF, TELEFONE, SENHA )VALUES(:nome, :profissao, :email, :cpf, :telefone, :senha)";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':nome', $this->__get('nome'));
@@ -30,9 +31,9 @@ class Usuario extends Model{
         $stmt->bindValue(':email', $this->__get('email'));
         $stmt->bindValue(':cpf', $this->__get('cpf'));
         $stmt->bindValue(':telefone', $this->__get('telefone'));
-        $stmt->bindValue(':senha', $this->__get('senha'));
+        $stmt->bindValue(':senha', $this->__get('senha'));    
         $stmt->execute();
-        
+
         return $this;     
     }
     //validar cadastro
@@ -73,34 +74,31 @@ class Usuario extends Model{
 
     public function autenticar(){
        
-        $query = "SELECT ID_INVESTIDOR, NOME,PROFISSAO, EMAIL, CPF FROM investidor WHERE CPF = :cpf AND SENHA = :senha";
+        $query = "SELECT ID, NOME,PROFISSAO, EMAIL, CPF, TELEFONE FROM investidor WHERE EMAIL = :email AND SENHA = :senha";
         $stmt = $this->db->prepare($query);
-        $stmt->bindValue(':cpf', $this->__get('cpf'));
+        $stmt->bindValue(':email', $this->__get('email'));
         $stmt->bindValue(':senha', $this->__get('senha'));
         $stmt->execute();
        
         $investidor = $stmt->fetch(\PDO::FETCH_ASSOC);
-        if($investidor['ID_INVESTIDOR'] != '' && $investidor['NOME'] != ''){
-            $this->__set('id', $investidor['ID_INVESTIDOR']);
+     
+        if($investidor["ID"] !='' && $investidor['NOME'] !=''){
+            $this->__set('id', $investidor['ID']);
             $this->__set('nome', $investidor['NOME']);
             $this->__set('profissao', $investidor['PROFISSAO']);
-            $this->__set('email', $investidor['EMAIL']);
             $this->__set('cpf', $investidor['CPF']);
-        }
-        else{
+            $this->__set('telefone', $investidor['TELEFONE']);
         }
         return $this;  
     }
 
     public function listar(){
-        $id = $_SESSION['ID_INVESTIDOR'];
-      
-        $query = "SELECT NOME, PROFISSAO, EMAIL, TELEFONE, CPF FROM investidor WHERE ID_INVESTIDOR = $id";
+        $id = $_SESSION['ID'];
+        $query = "SELECT NOME, PROFISSAO, EMAIL, TELEFONE, CPF FROM investidor WHERE ID = $id";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $usuario = $stmt->fetchAll();
 
-      
         return $usuario;
     }
 
